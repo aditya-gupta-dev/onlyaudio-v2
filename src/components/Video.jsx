@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAudio } from "../network/ApiService";
 
-
 export default function Video({video}) {
 
   const [isLoading, setIsLoading] = useState(true);
