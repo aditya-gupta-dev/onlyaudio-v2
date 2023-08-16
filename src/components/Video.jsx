@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAudio } from "../network/ApiService";
 
+
 export default function Video({video}) {
 
   const [isLoading, setIsLoading] = useState(true);
-  let url = "";
+  const [url, setUrl] = useState(''); 
 
   useEffect(() => {
     const func = async () => {
@@ -12,7 +13,7 @@ export default function Video({video}) {
       const response = await getAudio(video.id);
       
       if(response !== undefined) {
-        url = response.url;
+        setUrl(response.url);
       }
       setIsLoading(false);
     }
@@ -27,9 +28,7 @@ export default function Video({video}) {
           <div className="card-body">
             <h2 className="card-title">{video.title}</h2>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary w-full">
-                { isLoading ? <span className="loading loading-bars loading-sm"></span> : <audio className="w-full" src={url} controls loop></audio> }
-              </button>
+                { isLoading ? <span className="loading loading-bars loading-sm"></span> : <audio className="w-full" src={url} controls loop></audio> }    
             </div>
           </div>
         </div>
