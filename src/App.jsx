@@ -6,8 +6,7 @@ import BottomBar from './components/BottomBar';
 import { getVideos } from './network/ApiService';
 import LoadingBar from './components/LoadingBar';
 
-function App() {
-  
+export default function App() {
   const [theme, setTheme] = useState("");
   const [loading, setLoading] = useState(false);
   const [videosList, setVideosList] = useState([]);
@@ -47,4 +46,3 @@ function App() {
     
   );
 }
-export default App
