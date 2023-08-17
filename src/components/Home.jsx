@@ -5,7 +5,7 @@ import BottomBar from './BottomBar';
 import { getVideos } from '../network/ApiService'
 import LoadingBar from './LoadingBar';
 
-export default function Home() {
+export default function Home({currentTheme, setCurrentTheme}) {
   const [loading, setLoading] = useState(false);
   const [videosList, setVideosList] = useState([]);
   const inputReference = useRef();
@@ -23,7 +23,7 @@ export default function Home() {
   }
     
   return (
-    <div className='flex flex-col w-screen h-screen bg-base-100'>
+    <div data-theme={currentTheme} className='flex flex-col w-screen h-screen bg-base-100'>
       <NavBar/>
 
       <div className='flex overflow-y-auto mt-1 mb-8'>
