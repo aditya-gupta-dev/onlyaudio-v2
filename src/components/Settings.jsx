@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-export default function Settings() {
+export default function Settings({currentTheme, setCurrentTheme}) {
     return (
-        <div className="h-screen p-4">
+        <div className="h-screen p-4" data-theme={currentTheme}>
             <h1 className="text-4xl font-bold text-center">Settings</h1>
             <div className="py-4">
                 <h2 className="text-3xl font-bold py-2">Max Results</h2>
