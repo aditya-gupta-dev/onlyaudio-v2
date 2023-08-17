@@ -28,11 +28,11 @@ export default function Home() {
     if(savedTheme !== undefined) {
       setTheme(savedTheme);
     }
-  });
+  }, []);
     
   return (
     <div data-theme={theme} className='flex flex-col w-screen h-screen bg-base-100'>
-      <NavBar currentTheme={theme} setCurrentTheme={setTheme}/>
+      <NavBar/>
 
       <div className='flex overflow-y-auto mt-1 mb-8'>
         <div className='w-full mb-8'>
