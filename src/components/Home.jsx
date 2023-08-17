@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import NavBar from './NavBar';
 import Video from './Video';
 import BottomBar from './BottomBar';
@@ -6,7 +6,6 @@ import { getVideos } from '../network/ApiService'
 import LoadingBar from './LoadingBar';
 
 export default function Home() {
-  const [theme, setTheme] = useState("");
   const [loading, setLoading] = useState(false);
   const [videosList, setVideosList] = useState([]);
   const inputReference = useRef();
@@ -22,16 +21,9 @@ export default function Home() {
       console.error("Network Error");
     }
   }
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if(savedTheme !== undefined) {
-      setTheme(savedTheme);
-    }
-  }, []);
     
   return (
-    <div data-theme={theme} className='flex flex-col w-screen h-screen bg-base-100'>
+    <div className='flex flex-col w-screen h-screen bg-base-100'>
       <NavBar/>
 
       <div className='flex overflow-y-auto mt-1 mb-8'>
