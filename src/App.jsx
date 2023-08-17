@@ -6,7 +6,16 @@ import Settings from './components/Settings';
 
 export default function App() {
   
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if(savedTheme !== undefined) {
+      setTheme(savedTheme);
+    } else {
+      setTheme("light");
+    }
+  }, []);
 
   return (
     <BrowserRouter>
