@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
 
 export default function Settings({currentTheme, setCurrentTheme}) {
+
+    const darkButtonClick = () => {
+        setCurrentTheme("dark");
+        localStorage.setItem("theme", "dark");
+    };
+
+    const lightButtonClick = () => {
+        setCurrentTheme("light");
+        localStorage.setItem("theme", "light");
+    };
+
     return (
         <div className="h-screen p-4" data-theme={currentTheme}>
             <h1 className="text-4xl font-bold text-center">Settings</h1>
@@ -18,8 +29,8 @@ export default function Settings({currentTheme, setCurrentTheme}) {
             <div className="join flex py-4 justify-center flex-col">
                 <h2 className="text-3xl font-bold">Change Theme</h2>
                 <div className="flex flex-row justify-center"> 
-                    <button className="btn join-item">Light</button>
-                    <button className="btn join-item">Dark</button>
+                    <button className="btn join-item" onClick={lightButtonClick}>Light</button>
+                    <button className="btn join-item" onClick={darkButtonClick}>Dark</button>
                 </div>
             </div>
             <hr />
