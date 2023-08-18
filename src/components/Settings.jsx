@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Settings({currentTheme, setCurrentTheme}) {
@@ -12,12 +14,26 @@ export default function Settings({currentTheme, setCurrentTheme}) {
         localStorage.setItem("theme", "light");
     };
 
+    const [value, setValue] = useState(5);
+
+    useEffect(() => {
+        const storedMaxValue = localStorage.getItem("maxResults");
+        if(storedMaxValue !== undefined) {
+            setValue(storedMaxValue);
+        }
+    }, []);
+
+    const valueChange = (e) => {
+        setValue(e.target.value);
+        localStorage.setItem("maxResults", e.target.value);
+    };
+
     return (
         <div className="h-screen p-4" data-theme={currentTheme}>
             <h1 className="text-4xl font-bold text-center">Settings</h1>
             <div className="py-4">
-                <h2 className="text-3xl font-bold py-2">Max Results</h2>
-                <input type="range" min="5" max="20" value="10" className="range" step="5" />
+                <h2 className="text-3xl font-bold py-2">Max Results : {value}</h2>
+                <input type="range" min="5" max="20" value={value} className="range" onChange={valueChange}/>
                 <div className="w-full flex justify-between text-xs px-2">
                     <span>5</span>
                     <span>10</span>
