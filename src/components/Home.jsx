@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import NavBar from './NavBar';
 import Video from './Video';
 import BottomBar from './BottomBar';
-import { getVideos } from '../network/ApiService'
+import { getVideos, getVideosWithMaxResults } from '../network/ApiService'
 import LoadingBar from './LoadingBar';
 
 export default function Home({currentTheme, setCurrentTheme}) {
@@ -11,12 +11,20 @@ export default function Home({currentTheme, setCurrentTheme}) {
   const inputReference = useRef();
   
   const onButtonClick = async (text) => {
-    setLoading(true);
-    const videos = await getVideos(text);
-    inputReference.current.value = "";
-    setLoading(false);
-    setVideosList(videos);
-    
+      inputReference.current.value = "";
+      setLoading(true);
+      
+      const savedMaxResults = localStorage.getItem("maxResults");
+
+      if(savedMaxResults === undefined) {
+        const videos = await getVideos(text);
+        setLoading(false);
+        setVideosList(videos);
+      } else {
+        const videos = await getVideosWithMaxResults(text, savedMaxResults);
+        setLoading(false);
+        setVideosList(videos);
+      }
   }
     
   return (
