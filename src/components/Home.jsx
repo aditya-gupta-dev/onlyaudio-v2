@@ -11,15 +11,12 @@ export default function Home({currentTheme, setCurrentTheme}) {
   const inputReference = useRef();
   
   const onButtonClick = async (text) => {
-    try {
-      setLoading(true);
-      const videos = await getVideos(text);
-      inputReference.current.value = "";
-      setLoading(false);
-      setVideosList(videos);
-    } catch {
-      console.error("Network Error");
-    }
+    setLoading(true);
+    const videos = await getVideos(text);
+    inputReference.current.value = "";
+    setLoading(false);
+    setVideosList(videos);
+    
   }
     
   return (
