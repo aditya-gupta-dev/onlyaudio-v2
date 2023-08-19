@@ -49,8 +49,9 @@ export default function Settings({currentTheme, setCurrentTheme}) {
                 </div>
             </div>
             <hr />
-            <div className="p-4">
+            <div className="p-4 flex">
                 <Link to="/" className="btn btn-primary">Back</Link>
+                <a href="https://github.com/aditya-gupta-dev/onlyaudio-v2" className="btn btn-success ml-2">Code</a>
             </div>
             <hr />
         </div>
