@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Settings({currentTheme, setCurrentTheme}) {
@@ -53,6 +52,7 @@ export default function Settings({currentTheme, setCurrentTheme}) {
             <div className="p-4">
                 <Link to="/" className="btn btn-primary">Back</Link>
             </div>
+            <hr />
         </div>
     );
 }
